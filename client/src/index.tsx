@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './components/app/App';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <StrictMode>
     <App />
-  </React.StrictMode>,
+  </StrictMode>,
   document.getElementById('root')
 );
+
+// https://medium.com/@Charles_Stover/optimal-file-structure-for-react-applications-f3e35ad0a145
+// https://medium.com/@RossWhitehouse/setting-up-eslint-in-react-c20015ef35f7
+// https://medium.com/@rossbulat/react-dark-mode-with-styled-theming-and-context-57557de6400
