@@ -1,9 +1,7 @@
-import react, { useContext, createContext } from 'React';
-import styled, { ThemeProvider } from 'styled-components';
-import { background, text } from './theme';
+import React, { useContext, createContext } from 'react';
 
-const toggleThemeContext = createContext({
+export const ToggleThemeContext = createContext({
   toggle: () => { }
 });
 
-export const appTheme = () => useContext(toggleThemeContext);
+export const appTheme = () => useContext(ToggleThemeContext);
