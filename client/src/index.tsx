@@ -4,9 +4,11 @@ import CustomThemeProvider from './components/theme/ThemeProvider';
 import './index.css';
 import 'antd/dist/antd.css';
 import App from './components/app/App';
+import { GlobalStyle } from './components/styled/Wrapper';
 
 ReactDOM.render(
   <CustomThemeProvider>
+    <GlobalStyle />
     <App />
   </CustomThemeProvider>,
   document.getElementById('root')
