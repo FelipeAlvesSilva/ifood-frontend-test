@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import SpotifyLogo from '../../images/Spotify_Icon_CMYK_Green.png'
 import { FaSun as Sun } from 'react-icons/fa';
 import { IoMdMoon as Moon } from 'react-icons/io';
@@ -14,9 +14,9 @@ const Header = (props: HeaderProps) => (
   <div className="container my-4">
     <Title className="m-5">
       <img className="mr-3" src={SpotifyLogo} alt="Spotify brand icon" style={{ height: '60px', width: '60px' }} />
-      {/* <Link to="/home"> */}
+      <Link to="/home">
         Spotifood
-      {/* </Link> */}
+      </Link>
       <Switch
         onClick={() => props.toggle()}
         style={{ float: 'right' }}
