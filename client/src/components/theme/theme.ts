@@ -10,3 +10,16 @@ export const text = theme('mode', {
   light: '#222',
   dark: '#ffffffe0'
 });
+
+/*
+  Spotify colors:
+
+  Green
+  #1DB954
+
+  White
+  #FFFFFF
+
+  Black
+  #191414
+*/

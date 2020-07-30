@@ -1,6 +1,8 @@
 import React from 'react';
-import { TiWeatherPartlySunny as Sun } from 'react-icons/ti';
-import { GiMoon as Moon } from 'react-icons/gi';
+// import { Link } from 'react-router-dom';
+import SpotifyLogo from '../../images/Spotify_Icon_CMYK_Green.png'
+import { FaSun as Sun } from 'react-icons/fa';
+import { IoMdMoon as Moon } from 'react-icons/io';
 import { Switch } from 'antd';
 import { Title } from '../styled/Title';
 
@@ -9,14 +11,17 @@ type HeaderProps = {
 };
 
 const Header = (props: HeaderProps) => (
-  <div>
+  <div className="container my-4">
     <Title className="m-5">
-      Spotifood
+      <img className="mr-3" src={SpotifyLogo} alt="Spotify brand icon" style={{ height: '60px', width: '60px' }} />
+      {/* <Link to="/home"> */}
+        Spotifood
+      {/* </Link> */}
       <Switch
         onClick={() => props.toggle()}
         style={{ float: 'right' }}
-        checkedChildren={<Moon />}
-        unCheckedChildren={<Sun />}
+        checkedChildren={<Moon className="switcher-icon" />}
+        unCheckedChildren={<Sun className="switcher-icon" />}
         defaultChecked
       />
     </Title>

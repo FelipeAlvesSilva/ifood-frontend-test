@@ -10,4 +10,8 @@ export const GlobalStyle = createGlobalStyle`
     max-width: 52rem;
     padding: 0.605rem 1.3125rem;
   }
+
+  h1, h2, h3, h4, p {
+    color: ${text};
+  }
 `;

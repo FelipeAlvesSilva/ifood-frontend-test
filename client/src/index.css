@@ -18,3 +18,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Switcher button class */
+.ant-switch-checked,
+.ant-switch {
+  background-color: #0f1118 !important;
+}
+
+.ant-switch-inner {
+  line-height: normal;
+}
+
+.switcher-icon {
+  font-size: 17px;
+  color: yellow;
+}

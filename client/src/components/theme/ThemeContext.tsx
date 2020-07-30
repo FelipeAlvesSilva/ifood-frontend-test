@@ -4,4 +4,4 @@ export const ToggleThemeContext = createContext({
   toggle: () => { }
 });
 
-export const appTheme = () => useContext(ToggleThemeContext);
+export const AppTheme = () => useContext(ToggleThemeContext);

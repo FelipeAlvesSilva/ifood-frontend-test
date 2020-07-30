@@ -1,10 +1,10 @@
-import React, { StrictMode } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import CustomThemeProvider from './components/theme/ThemeProvider';
+import { GlobalStyle } from './components/styled/Wrapper';
 import './index.css';
 import 'antd/dist/antd.css';
-import App from './components/app/App';
-import { GlobalStyle } from './components/styled/Wrapper';
+import App from './components/App';
 
 ReactDOM.render(
   <CustomThemeProvider>
