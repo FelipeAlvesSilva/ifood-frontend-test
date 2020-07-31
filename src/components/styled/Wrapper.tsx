@@ -11,6 +11,12 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0.605rem 1.3125rem;
   }
 
+  .custom-link,
+  .custom-link:hover {
+    color:inherit;
+    text-decoration: none;
+  }
+
   h1, h2, h3, h4, p {
     color: ${text};
   }

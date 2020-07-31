@@ -1,10 +1,10 @@
 import { combineReducers, Reducer } from 'redux';
 import { playlistReducer } from './playlist';
-import { sessionReducer } from './session';
+import { authReducer } from './auth';
 
 export const rootReducer: Reducer = combineReducers({
   playlistReducer,
-  sessionReducer
+  authReducer
 });
 
 // export type RootState = ReturnType<typeof rootReducer>

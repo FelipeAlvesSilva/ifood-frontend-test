@@ -1,4 +1,4 @@
-import { User } from '../session/types';
+import { User } from '../auth/types';
 
 export interface Playlist {
   id: string,

@@ -14,7 +14,7 @@ const Header = (props: HeaderProps) => (
   <div className="container my-4">
     <Title className="m-5">
       <img className="mr-3" src={SpotifyLogo} alt="Spotify brand icon" style={{ height: '60px', width: '60px' }} />
-      <Link to="/home">
+      <Link className="custom-link" to="/home">
         Spotifood
       </Link>
       <Switch

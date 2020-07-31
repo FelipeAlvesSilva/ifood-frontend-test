@@ -1,6 +1,6 @@
-import { SessionState, USER_AUTHENTICATION } from "../store/session/types";
+import { AuthState, USER_AUTHENTICATION } from "../store/auth/types";
 
-const INITIAL_STATE: SessionState = {
+const INITIAL_STATE: AuthState = {
   session: { 
     id: '', 
     displayName: '', 
@@ -8,7 +8,7 @@ const INITIAL_STATE: SessionState = {
   }
 };
 
-export const sessionReducer = (state = INITIAL_STATE, action) => {
+export const authReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case USER_AUTHENTICATION:
       return state;

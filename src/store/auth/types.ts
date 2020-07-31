@@ -4,7 +4,7 @@ export interface User {
   email: string,
 };
 
-export interface SessionState {
+export interface AuthState {
   session: User
 };
 
@@ -15,4 +15,4 @@ interface AuthUser {
   payload: User
 };
 
-export type SessionActionTypes = AuthUser
+export type AuthActionTypes = AuthUser
