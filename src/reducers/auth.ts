@@ -8,7 +8,7 @@ const INITIAL_STATE: AuthState = {
   }
 };
 
-export const authReducer = (state = INITIAL_STATE, action) => {
+export const authReducer = (state = INITIAL_STATE, action): AuthState => {
   switch (action.type) {
     case USER_AUTHENTICATION:
       return state;

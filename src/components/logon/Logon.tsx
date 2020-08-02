@@ -4,7 +4,7 @@ import { Button } from '../styled/Button';
 import SpotifyBrandIcon from '../../images/Spotify_Icon_CMYK_Black.png';
 import { LOGIN_SPOTIFY_BASE_URL } from '../../utils/constraints';
 
-const BrandLogo = styled.img.attrs({
+const BrandLogo: any = styled.img.attrs({
   src: `${SpotifyBrandIcon}`,
   alt: 'Spotify brand logo'
 })`
@@ -24,7 +24,9 @@ const Logon = () => {
     <div style={{ marginLeft: 'auto', marginRight: 'auto', maxWidth: '30rem', textAlign: 'center', padding: '4rem 0rem' }}>
       <BrandLogo />
       <h2 className='display-4'>Welcome to Spotifood</h2>
-      <p className="lead">Here you can find all the most played playlists of the moment according to your profile 🎧</p>
+      <p className="lead">
+        Here you can find all the most played playlists of the moment according to your profile <span role="img" aria-label="Headhphone emoji">🎧</span>
+      </p>
       <Button block onClick={() => handleUserLogin()}>Login on Spotify</Button>
     </div>
   )
