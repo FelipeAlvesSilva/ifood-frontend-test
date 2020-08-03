@@ -1,9 +1,6 @@
-import { User } from '../auth/types';
-
 export interface Playlist {
   id: string,
   name: string,
-  owner: User,
   description: string,
   public: boolean,
   images: PlaylistImages[]
