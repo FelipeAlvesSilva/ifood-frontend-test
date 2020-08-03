@@ -10,6 +10,4 @@ const spotifyAPI = axios.create({
   }
 });
 
-spotifyAPI.interceptors.request.use();
-
 export { spotifyAPI };

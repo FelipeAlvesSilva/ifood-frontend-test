@@ -9,8 +9,11 @@ import { FaSearch } from 'react-icons/fa';
 import { AppTheme } from '../theme/ThemeContext';
 import Input from '../styled/Input';
 import HeaderNav from '../header/HeaderNav';
-import Filters from '../filters/Filters';
+import FiltersType from '../filters/Filters';
 import Playlists from '../playlist/Playlists';
+
+import { spotifyAPI } from '../../services/spotifyApi';
+import { REFRESH_TOKEN_BASE_URL, REDIRECT_URI, CLIENT_ID, CLIENT_SECRET } from '../../utils/constraints';
 
 const Home = (props) => {
   const themeToggle = AppTheme();
@@ -18,7 +21,7 @@ const Home = (props) => {
   const [token, setToken] = useState<AuthState>({ accessToken: { token: '', tokenType: '', expires: 0 } });
 
   const dispatch = useDispatch();
-  const stateSelector = useSelector<REDUCER_STATE>(state => state.authReducer);
+  // const stateSelector = useSelector<REDUCER_STATE>(state => state.authReducer);
 
   useEffect(() => {
     mapTokenValues(window.location.hash);
@@ -26,7 +29,35 @@ const Home = (props) => {
 
   useEffect(() => {
     dispatch(setAccessToken(token));
+    setTimeout(() => {
+      requestNewToken();
+    }, token.accessToken.expires * 1000);
   }, [token]);
+
+  const requestNewToken = () => {
+    let config = {
+      headers: {
+        Authorization: "Basic " + CLIENT_ID + CLIENT_SECRET
+      }
+    };
+
+    let data = {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'grant_type': 'authorization_code',
+      'code': token.accessToken.token,
+      'redirect_uri': REDIRECT_URI,
+      'client_id': CLIENT_ID, //🤔
+      'client_secret': CLIENT_SECRET //🤔
+    };
+
+    spotifyAPI.post(REFRESH_TOKEN_BASE_URL, data, config)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+  };
 
   const mapTokenValues = (hash: string) => {
     const tokenPattern = new RegExp(/(?<=\#access_token=)(.*?)(?=\&)/g);
@@ -52,11 +83,11 @@ const Home = (props) => {
         placeholder="Search..."
         prefix={<FaSearch className="mb-2 mt-2 mr-3 ml-2" />}
       />
-      <Filters />
+      <FiltersType />
       <Playlists />
     </Fragment>
   );
-}
+};
 
 // HOC to obtain theme prop
 export default withTheme(Home);
