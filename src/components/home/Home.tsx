@@ -14,7 +14,7 @@ const Home = (props) => {
     <Fragment>
       <HeaderNav toggle={themeToggle.toggle} />
       <Input
-        className="m-3"
+        className="m-2"
         // onChange={(e) => setSearchValue(e.target.value)}
         placeholder="Search..."
         prefix={<FaSearch className="mb-2 mt-2 mr-3 ml-2" />}
