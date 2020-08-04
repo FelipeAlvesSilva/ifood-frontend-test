@@ -1,9 +1,11 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { REDUCER_STATE } from '../../reducers/types';
+import { useDispatch } from 'react-redux';
 import { AuthState } from '../../store/auth/types';
 import { setAccessToken } from '../../store/auth/actions';
 
+import { spotifyAPI } from '../../services/spotifyApi';
+import { REFRESH_TOKEN_BASE_URL, REDIRECT_URI, CLIENT_ID, CLIENT_SECRET } from '../../utils/constraints';
+import { showMessage, MessageTypes } from '../../services/messages';
 import { withTheme } from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
 import { AppTheme } from '../theme/ThemeContext';
@@ -12,8 +14,6 @@ import HeaderNav from '../header/HeaderNav';
 import FiltersType from '../filters/Filters';
 import Playlists from '../playlist/Playlists';
 
-import { spotifyAPI } from '../../services/spotifyApi';
-import { REFRESH_TOKEN_BASE_URL, REDIRECT_URI, CLIENT_ID, CLIENT_SECRET } from '../../utils/constraints';
 
 const Home = (props) => {
   const themeToggle = AppTheme();
@@ -21,7 +21,6 @@ const Home = (props) => {
   const [token, setToken] = useState<AuthState>({ accessToken: { token: '', tokenType: '', expires: 0 } });
 
   const dispatch = useDispatch();
-  // const stateSelector = useSelector<REDUCER_STATE>(state => state.authReducer);
 
   useEffect(() => {
     mapTokenValues(window.location.hash);
@@ -30,11 +29,12 @@ const Home = (props) => {
   useEffect(() => {
     dispatch(setAccessToken(token));
     setTimeout(() => {
-      requestNewToken();
+      if (!requestNewToken())
+        showMessage('Error on refresh access token', MessageTypes.MESSAGE_ERROR);
     }, token.accessToken.expires * 1000);
   }, [token]);
 
-  const requestNewToken = () => {
+  const requestNewToken = (): any => {
     let config = {
       headers: {
         Authorization: "Basic " + CLIENT_ID + CLIENT_SECRET
@@ -46,8 +46,7 @@ const Home = (props) => {
       'grant_type': 'authorization_code',
       'code': token.accessToken.token,
       'redirect_uri': REDIRECT_URI,
-      'client_id': CLIENT_ID, //🤔
-      'client_secret': CLIENT_SECRET //🤔
+      'client_id': CLIENT_ID //🤔
     };
 
     spotifyAPI.post(REFRESH_TOKEN_BASE_URL, data, config)
@@ -56,6 +55,7 @@ const Home = (props) => {
       })
       .catch((err) => {
         console.error(err);
+        return false;
       })
   };
 
