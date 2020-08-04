@@ -1,0 +1,278 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page not found component tests Should not regress 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="container my-4"
+      >
+        <h1
+          class="sc-AxjAm kdfdMB m-5"
+        >
+          <img
+            alt="Spotify brand icon"
+            class="mr-3"
+            src="Spotify_Icon_CMYK_Green.png"
+            style="height: 60px; width: 60px;"
+          />
+          <a
+            class="custom-link"
+            href="/home"
+          >
+            Spotifood
+          </a>
+          <button
+            aria-checked="true"
+            class="ant-switch ant-switch-checked"
+            role="switch"
+            style="float: right;"
+            type="button"
+          >
+            <div
+              class="ant-switch-handle"
+            />
+            <span
+              class="ant-switch-inner"
+            >
+              <svg
+                class="switcher-icon"
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M195 125c0-26.3 5.3-51.3 14.9-74.1C118.7 73 51 155.1 51 253c0 114.8 93.2 208 208 208 97.9 0 180-67.7 202.1-158.9-22.8 9.6-47.9 14.9-74.1 14.9-106 0-192-86-192-192z"
+                />
+              </svg>
+            </span>
+          </button>
+        </h1>
+      </div>
+      <div
+        class="ant-row mt-6"
+      >
+        <div
+          class="ant-col"
+          style="text-align: end; flex: 2 2 auto;"
+        >
+          <h1
+            class="display-4"
+            style="font-weight: bold;"
+          >
+            :(
+          </h1>
+        </div>
+        <div
+          class="ant-col"
+          style="text-align: center; flex: 3 3 auto;"
+        >
+          <h1
+            class="display-4"
+            style="font-weight: bold;"
+          >
+            Page not Found.
+          </h1>
+          <p
+            class="lead"
+          >
+            Sorry, we couldn't find what you were looking for, please try again.
+          </p>
+          <div>
+            <svg
+              class="m-2"
+              fill="currentColor"
+              height="2rem"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="2rem"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g>
+                <path
+                  d="M0 0h24v24H0z"
+                  fill="none"
+                />
+                <path
+                  d="M6 19h12V9.157l-6-5.454-6 5.454V19zm13 2H5a1 1 0 0 1-1-1v-9H1l10.327-9.388a1 1 0 0 1 1.346 0L23 11h-3v9a1 1 0 0 1-1 1zM7.5 13h2a2.5 2.5 0 1 0 5 0h2a4.5 4.5 0 1 1-9 0z"
+                />
+              </g>
+            </svg>
+            <a
+              href="/home"
+            >
+              Go to homepage
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="container my-4"
+    >
+      <h1
+        class="sc-AxjAm kdfdMB m-5"
+      >
+        <img
+          alt="Spotify brand icon"
+          class="mr-3"
+          src="Spotify_Icon_CMYK_Green.png"
+          style="height: 60px; width: 60px;"
+        />
+        <a
+          class="custom-link"
+          href="/home"
+        >
+          Spotifood
+        </a>
+        <button
+          aria-checked="true"
+          class="ant-switch ant-switch-checked"
+          role="switch"
+          style="float: right;"
+          type="button"
+        >
+          <div
+            class="ant-switch-handle"
+          />
+          <span
+            class="ant-switch-inner"
+          >
+            <svg
+              class="switcher-icon"
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M195 125c0-26.3 5.3-51.3 14.9-74.1C118.7 73 51 155.1 51 253c0 114.8 93.2 208 208 208 97.9 0 180-67.7 202.1-158.9-22.8 9.6-47.9 14.9-74.1 14.9-106 0-192-86-192-192z"
+              />
+            </svg>
+          </span>
+        </button>
+      </h1>
+    </div>
+    <div
+      class="ant-row mt-6"
+    >
+      <div
+        class="ant-col"
+        style="text-align: end; flex: 2 2 auto;"
+      >
+        <h1
+          class="display-4"
+          style="font-weight: bold;"
+        >
+          :(
+        </h1>
+      </div>
+      <div
+        class="ant-col"
+        style="text-align: center; flex: 3 3 auto;"
+      >
+        <h1
+          class="display-4"
+          style="font-weight: bold;"
+        >
+          Page not Found.
+        </h1>
+        <p
+          class="lead"
+        >
+          Sorry, we couldn't find what you were looking for, please try again.
+        </p>
+        <div>
+          <svg
+            class="m-2"
+            fill="currentColor"
+            height="2rem"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="2rem"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g>
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M6 19h12V9.157l-6-5.454-6 5.454V19zm13 2H5a1 1 0 0 1-1-1v-9H1l10.327-9.388a1 1 0 0 1 1.346 0L23 11h-3v9a1 1 0 0 1-1 1zM7.5 13h2a2.5 2.5 0 1 0 5 0h2a4.5 4.5 0 1 1-9 0z"
+              />
+            </g>
+          </svg>
+          <a
+            href="/home"
+          >
+            Go to homepage
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

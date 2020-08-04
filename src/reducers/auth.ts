@@ -1,6 +1,6 @@
 import { AuthState, USER_AUTHENTICATION, AuthActionTypes, DELETE_USER_AUTHENTICATION } from "../store/auth/types";
 
-const INITIAL_STATE: AuthState = {
+export const INITIAL_STATE: AuthState = {
   accessToken: {
     token: '',
     tokenType: '',

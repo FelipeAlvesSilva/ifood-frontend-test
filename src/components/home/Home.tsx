@@ -1,21 +1,18 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AuthState } from '../../store/auth/types';
-import { setAccessToken } from '../../store/auth/actions';
+import { setAccessToken, refreshAccessToken } from '../../store/auth/actions';
 
-import { spotifyAPI } from '../../services/spotifyApi';
-import { REFRESH_TOKEN_BASE_URL, REDIRECT_URI, CLIENT_ID, CLIENT_SECRET } from '../../utils/constraints';
 import { showMessage, MessageTypes } from '../../services/messages';
-import { withTheme } from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
 import { AppTheme } from '../theme/ThemeContext';
+
 import Input from '../styled/Input';
 import HeaderNav from '../header/HeaderNav';
 import FiltersType from '../filters/Filters';
 import Playlists from '../playlist/Playlists';
 
-
-const Home = (props) => {
+const Home = () => {
   const themeToggle = AppTheme();
   const [searchValue, setSearchValue] = useState('');
   const [token, setToken] = useState<AuthState>({ accessToken: { token: '', tokenType: '', expires: 0 } });
@@ -27,37 +24,16 @@ const Home = (props) => {
   }, []);
 
   useEffect(() => {
+    // setting the access token
     dispatch(setAccessToken(token));
+
     setTimeout(() => {
-      if (!requestNewToken())
+      // requesting refresh token after timeout expires
+      if (!dispatch(refreshAccessToken(token)))
         showMessage('Error on refresh access token', MessageTypes.MESSAGE_ERROR);
     }, token.accessToken.expires * 1000);
+
   }, [token]);
-
-  const requestNewToken = (): any => {
-    let config = {
-      headers: {
-        Authorization: "Basic " + CLIENT_ID + CLIENT_SECRET
-      }
-    };
-
-    let data = {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'grant_type': 'authorization_code',
-      'code': token.accessToken.token,
-      'redirect_uri': REDIRECT_URI,
-      'client_id': CLIENT_ID //🤔
-    };
-
-    spotifyAPI.post(REFRESH_TOKEN_BASE_URL, data, config)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.error(err);
-        return false;
-      })
-  };
 
   const mapTokenValues = (hash: string) => {
     const tokenPattern = new RegExp(/(?<=\#access_token=)(.*?)(?=\&)/g);
@@ -89,8 +65,7 @@ const Home = (props) => {
   );
 };
 
-// HOC to obtain theme prop
-export default withTheme(Home);
+export default Home;
 
 /**
    * Listeners:

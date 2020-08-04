@@ -6,7 +6,7 @@ import {
   FILTER_PLAYLISTS
 } from "../store/playlist/types";
 
-const INITIAL_STATE: PlaylistState = {
+export const INITIAL_STATE: PlaylistState = {
   playlists: []
 };
 
