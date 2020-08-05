@@ -3,7 +3,6 @@ import { spotifyAPI as api } from '../../services/spotifyApi';
 import { REFRESH_TOKEN_BASE_URL, REDIRECT_URI, CLIENT_ID, CLIENT_SECRET } from "../../utils/constraints";
 
 export const setAccessToken = (tokenData: AuthState): AuthActionTypes => {
-  api.defaults.headers.common['Authorization'] = `Bearer${tokenData.accessToken.token}`
   return {
     type: "USER_AUTHENTICATION",
     payload: tokenData
@@ -11,9 +10,10 @@ export const setAccessToken = (tokenData: AuthState): AuthActionTypes => {
 };
 
 export const refreshAccessToken = (currentToken: AuthState) => {
+  console.log(`currentToken: ${JSON.stringify(currentToken.accessToken)}`);
   const config = {
     headers: {
-      Authorization: "Basic " + CLIENT_ID + CLIENT_SECRET
+      'Authorization': `Basic ${btoa(`${CLIENT_ID}:${CLIENT_SECRET}`)}`,
     }
   };
 
@@ -21,14 +21,13 @@ export const refreshAccessToken = (currentToken: AuthState) => {
     'Content-Type': 'application/x-www-form-urlencoded',
     'grant_type': 'authorization_code',
     'code': currentToken.accessToken.token,
-    'redirect_uri': REDIRECT_URI,
-    'client_id': CLIENT_ID //🤔
+    'redirect_uri': REDIRECT_URI
   };
 
   return (dispatch: any) => {
     api.post(REFRESH_TOKEN_BASE_URL, data, config)
       .then(res => {
-
+        console.log(res);
         const refreshToken: AuthState = {
           accessToken: {
             // res.data.access_token == <old_token>

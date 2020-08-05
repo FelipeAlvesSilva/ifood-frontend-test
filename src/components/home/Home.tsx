@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
 import { AuthState } from '../../store/auth/types';
 import { setAccessToken, refreshAccessToken } from '../../store/auth/actions';
 
@@ -11,12 +11,14 @@ import Input from '../styled/Input';
 import HeaderNav from '../header/HeaderNav';
 import FiltersType from '../filters/Filters';
 import Playlists from '../playlist/Playlists';
+import { REDUCER_STATE } from '../../reducers/types';
 
 const Home = () => {
   const themeToggle = AppTheme();
   const [searchValue, setSearchValue] = useState('');
   const [token, setToken] = useState<AuthState>({ accessToken: { token: '', tokenType: '', expires: 0 } });
 
+  const selectorAuth = useSelector<REDUCER_STATE, AuthState>(state => state.authReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,16 +26,15 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    // setting the access token
-    dispatch(setAccessToken(token));
+    if (selectorAuth.accessToken.token !== '') {
+      setTimeout(() => {
+        // requesting refresh token after timeout expires
+        if (!dispatch(refreshAccessToken(selectorAuth)))
+          showMessage('Error on refresh access token', MessageTypes.MESSAGE_ERROR);
+      }, token.accessToken.expires * 1000);
+    }
 
-    setTimeout(() => {
-      // requesting refresh token after timeout expires
-      if (!dispatch(refreshAccessToken(token)))
-        showMessage('Error on refresh access token', MessageTypes.MESSAGE_ERROR);
-    }, token.accessToken.expires * 1000);
-
-  }, [token]);
+  }, [selectorAuth]);
 
   const mapTokenValues = (hash: string) => {
     const tokenPattern = new RegExp(/(?<=\#access_token=)(.*?)(?=\&)/g);
@@ -47,7 +48,7 @@ const Home = () => {
         expires: Number.parseInt(tokenTimeoutPattern.exec(hash)?.[0] || '')
       }
     };
-    setToken(tokenReceived);
+    dispatch(setAccessToken(tokenReceived));
   };
 
   return (
