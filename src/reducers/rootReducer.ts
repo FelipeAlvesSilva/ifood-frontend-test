@@ -1,4 +1,4 @@
-import { combineReducers, Reducer } from 'redux';
+import { combineReducers } from 'redux';
 import { playlistReducer } from './playlist';
 import { authReducer } from './auth';
 

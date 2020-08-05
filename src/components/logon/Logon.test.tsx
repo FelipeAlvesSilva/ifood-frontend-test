@@ -1,7 +1,8 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, getByText, screen } from '@testing-library/react';
 import Logon from '../../components/logon/Logon';
 import { SPOTIFY_AUTH_BASE_URL } from '../../utils/constraints';
+import { Button } from '../styled/Button';
 
 describe('Tests for Logon Component', () => {
   test('Component should not regress', () => {
@@ -10,9 +11,12 @@ describe('Tests for Logon Component', () => {
   });
 
   xtest('Spotify login action', () => {
-    const { getByText } = render(<Logon />);
+    const mockBtnCallback = jest.fn();
+    const element = screen.getByText('Login on Spotify');
 
-    fireEvent.click(getByText('Login on Spotify'));
-    expect(window.location.href).toEqual(SPOTIFY_AUTH_BASE_URL);
+    element.onclick = mockBtnCallback;
+    fireEvent.click(element);
+
+    expect(mockBtnCallback.mock.calls.length).toEqual(1);
   })
 });

@@ -1,41 +1,41 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Collapse } from 'antd';
 import { BsFilter } from 'react-icons/bs';
 import { mockyAPI } from '../../services/mockyApi';
-import { FiltersType, Filter } from '../../utils/filtersLabels';
+import { FiltersType } from '../../utils/filtersLabels';
 
-type FilterPanelProps = {
-  filterLabel: Filter
-};
+// type FilterPanelProps = {
+//   filterLabel: Filter
+// };
 
-const FilterPanel = (props: FilterPanelProps): JSX.Element => {
-  switch (props.filterLabel.id.toLocaleLowerCase()) {
-    case ('locale'):
-      return (
-        <Fragment>locale</Fragment>
-      );
-    case ('country'):
-      return (
-        <Fragment>country</Fragment>
-      );
-    case ('timestamp'):
-      return (
-        <Fragment>timestamp</Fragment>
-      );
-    case ('limit'):
-      return (
-        <Fragment>limit</Fragment>
-      );
-    case ('offset'):
-      return (
-        <Fragment>offset</Fragment>
-      );
-    default:
-      return (
-        <Fragment></Fragment>
-      ); // No filters available
-  }
-};
+// const FilterPanel = (props: FilterPanelProps): JSX.Element => {
+//   switch (props.filterLabel.id.toLocaleLowerCase()) {
+//     case ('locale'):
+//       return (
+//         <Fragment>locale</Fragment>
+//       );
+//     case ('country'):
+//       return (
+//         <Fragment>country</Fragment>
+//       );
+//     case ('timestamp'):
+//       return (
+//         <Fragment>timestamp</Fragment>
+//       );
+//     case ('limit'):
+//       return (
+//         <Fragment>limit</Fragment>
+//       );
+//     case ('offset'):
+//       return (
+//         <Fragment>offset</Fragment>
+//       );
+//     default:
+//       return (
+//         <Fragment></Fragment>
+//       ); // No filters available
+//   }
+// };
 
 // UX - Clean filters option
 const Filters = () => {
@@ -45,7 +45,7 @@ const Filters = () => {
   useEffect(() => {
     mockyAPI.get('/')
       .then(res => {
-        setFilters(filters => res.data.filters);
+        setFilters(res.data.filters);
       });
   }, []);
 
